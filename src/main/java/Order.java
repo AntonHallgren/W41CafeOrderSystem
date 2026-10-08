@@ -63,11 +63,11 @@ public class Order {
     {
         IO.println("Customer \t: " + customerName);
         IO.println("Item     \t: " + menu.getItem(itemId).getName() + " x " + quantity);
-        IO.println("Subtotal \t: " + subtotal + " SEK");
-        IO.println("Discount \t: -" + discounts + " SEK");
-        IO.println("VAT      \t: " + vat + " SEK");
+        IO.println("Subtotal \t: " + Cafe.asSEK(subtotal));
+        IO.println("Discount \t: -" + Cafe.asSEK(discounts));
+        IO.println("VAT      \t: " + Cafe.asSEK(vat));
         IO.println("------------------------------");
-        IO.println("TOTAL    \t: " + total + " SEK");
+        IO.println("TOTAL    \t: " + Cafe.asSEK(total));
     }
 
     public String getCustomerName()

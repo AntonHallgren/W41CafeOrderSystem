@@ -10,7 +10,7 @@ public class MenuItem {
 
     public void print()
     {
-        IO.println(name + "\t" + cost + " SEK");
+        IO.println(name + "\t" + Cafe.asSEK(cost));
     }
 
     public double getCost()

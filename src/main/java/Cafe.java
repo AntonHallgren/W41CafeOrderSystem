@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Cafe
 {
     private static final String thickLine
@@ -51,6 +53,11 @@ public class Cafe
         printLine();
         IO.println("\t" + (capitalise ? name.toUpperCase() : name));
         printLine();
+    }
+
+    public static String asSEK(double amount)
+    {
+        return String.format(Locale.ENGLISH, "%.2f SEK", amount);
     }
 
 }
