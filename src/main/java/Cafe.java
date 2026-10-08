@@ -9,6 +9,11 @@ public class Cafe
     private final Menu menu = new Menu();
     private Order currentOrder;
 
+    private int customersServed = 0;
+    private double totalRevenue = 0;
+    public boolean open = true;
+
+
     public Cafe(String name)
     {
         this.name = name;
@@ -16,7 +21,10 @@ public class Cafe
 
     public void process()
     {
-        greetCustomer();
+        if(customersServed == 0)
+        {
+            greetCustomer();
+        }
         IO.println();
         printName(false);
         menu.print();
@@ -29,6 +37,8 @@ public class Cafe
         printLine();
         endInteraction();
         printLine();
+        customersServed++;
+        checkForNewCostomer();
     }
 
     private void greetCustomer() {
@@ -41,6 +51,19 @@ public class Cafe
     {
         IO.println("\tThank you, " + currentOrder.getCustomerName() + "!");
         IO.println("\tSee you next time.");
+    }
+
+    private void checkForNewCostomer()
+    {
+        String newName = Input.readString("Next customer name (or 'done' to close): ");
+        if(newName.equalsIgnoreCase("done"))
+        {
+            open = false;
+        }
+        else
+        {
+            currentOrder = new Order(newName, menu);
+        }
     }
 
     private void printLine()

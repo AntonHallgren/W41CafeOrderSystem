@@ -4,7 +4,11 @@
 void main() {
     Input.open();
     Cafe cafe = new Cafe("Lexicon Cafe");
-    cafe.process();
+    while(cafe.open)
+    {
+        cafe.process();
+
+    }
 
     Input.close();
 }
