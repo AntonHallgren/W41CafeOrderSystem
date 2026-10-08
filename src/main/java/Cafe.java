@@ -37,8 +37,8 @@ public class Cafe
 
     private void endInteraction()
     {
-        IO.println("Thank you, " + currentOrder.getCustomerName() + "!");
-        IO.println("See you next time.");
+        IO.println("\tThank you, " + currentOrder.getCustomerName() + "!");
+        IO.println("\tSee you next time.");
     }
 
     private void printLine()

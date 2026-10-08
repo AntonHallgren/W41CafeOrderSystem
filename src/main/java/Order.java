@@ -11,9 +11,9 @@ public class Order {
     private double total = 0;
 
 
-    private final double loyaltyDiscount = 0.15;
-    private final double quantityDiscount = 0.10;
-    private final double vatPercentage = 0.12;
+    private final static double loyaltyDiscount = 0.15;
+    private final static double quantityDiscount = 0.10;
+    private final static double vatPercentage = 0.12;
 
 
 
@@ -45,7 +45,7 @@ public class Order {
     {
         itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ") - 1;
         quantity = Input.readInt("How many? ");
-        String loyaltyMemberAnswer = Input.readString("Loyalty member? (yes/no)");
+        String loyaltyMemberAnswer = Input.readString("Loyalty member? (yes/no): ");
         switch (loyaltyMemberAnswer.toLowerCase())
         {
             case "yes", "y" -> hasLoyaltyDiscount = true;
@@ -53,6 +53,7 @@ public class Order {
             default ->
             {
                 IO.println("Interpreting invalid response as 'no'");
+                hasLoyaltyDiscount = false;
             }
         }
         calculatePrice();
@@ -61,12 +62,12 @@ public class Order {
     public void printReceipt()
     {
         IO.println("Customer \t: " + customerName);
-        IO.println("Item \t: " + menu.getItem(itemId).getName() + " x " + quantity);
+        IO.println("Item     \t: " + menu.getItem(itemId).getName() + " x " + quantity);
         IO.println("Subtotal \t: " + subtotal + " SEK");
         IO.println("Discount \t: -" + discounts + " SEK");
-        IO.println("VAT \t: " + vat + "SEK");
+        IO.println("VAT      \t: " + vat + " SEK");
         IO.println("------------------------------");
-        IO.println("TOTAL \t: " + total + "SEK");
+        IO.println("TOTAL    \t: " + total + " SEK");
     }
 
     public String getCustomerName()

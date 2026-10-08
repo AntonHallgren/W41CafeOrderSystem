@@ -9,11 +9,11 @@ public class Menu {
     private void makeStandardMenu()
     {
         items = new MenuItem[]{
-                new MenuItem("Espresso", 25.0),
+                new MenuItem("Espresso  ", 25.0),
                 new MenuItem("Cappuccino", 35.0),
-                new MenuItem("Latte", 40.0),
-                new MenuItem("Croissant", 30.0),
-                new MenuItem("Sandwich", 55.0)
+                new MenuItem("Latte     ", 40.0),
+                new MenuItem("Croissant ", 30.0),
+                new MenuItem("Sandwich  ", 55.0)
         };
     }
 
