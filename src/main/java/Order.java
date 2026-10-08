@@ -5,6 +5,18 @@ public class Order {
     private int quantity = 0;
 
     private double subtotal = 0;
+    private boolean hasLoyaltyDiscount = false;
+    private double discounts = 0;
+    private double vat = 0;
+    private double total = 0;
+
+
+    private final double loyaltyDiscount = 0.15;
+    private final double quantityDiscount = 0.10;
+    private final double vatPercentage = 0.12;
+
+
+
 
     private final Menu menu;
 
@@ -17,23 +29,44 @@ public class Order {
     private void calculatePrice()
     {
         subtotal = menu.getItem(itemId).getCost() * quantity;
+        if(hasLoyaltyDiscount)
+        {
+            discounts = subtotal * loyaltyDiscount;
+        }
+        else if(subtotal >= 150)
+        {
+            discounts = subtotal * quantityDiscount;
+        }
+        vat = (subtotal - discounts) * vatPercentage;
+        total = subtotal - discounts + vat;
     }
 
     public void takeOrder()
     {
         itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ") - 1;
         quantity = Input.readInt("How many? ");
-        //TODO do loyalty member later.
-
+        String loyaltyMemberAnswer = Input.readString("Loyalty member? (yes/no)");
+        switch (loyaltyMemberAnswer.toLowerCase())
+        {
+            case "yes", "y" -> hasLoyaltyDiscount = true;
+            case "no", "n" -> hasLoyaltyDiscount = false;
+            default ->
+            {
+                IO.println("Interpreting invalid response as 'no'");
+            }
+        }
         calculatePrice();
     }
 
     public void printReceipt()
     {
         IO.println("Customer \t: " + customerName);
-        IO.println("Item \t: " + menu.getItem(itemId).getName() + " x " + quantity);//TODO need access to item name
-        IO.println("Subtotal \t: " + subtotal + " SEK");//TODO calculate cost
-
+        IO.println("Item \t: " + menu.getItem(itemId).getName() + " x " + quantity);
+        IO.println("Subtotal \t: " + subtotal + " SEK");
+        IO.println("Discount \t: -" + discounts + " SEK");
+        IO.println("VAT \t: " + vat + "SEK");
+        IO.println("------------------------------");
+        IO.println("TOTAL \t: " + total + "SEK");
     }
 
     public String getCustomerName()
