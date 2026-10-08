@@ -85,10 +85,7 @@ public class Order {
                     hasLoyaltyDiscount = false;
                     validInputGiven = true;
                 }
-                default ->
-                {
-                    loyaltyMemberAnswer = Input.readString("Answer yes or no: ");
-                }
+                default -> loyaltyMemberAnswer = Input.readString("Answer yes or no: ");
             }
         }
 
