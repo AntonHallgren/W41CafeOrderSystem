@@ -1,14 +1,11 @@
-import java.util.Scanner;
 
 public class CafeApp
 {
-
-    static Scanner sc;
     static String customerName = "";
 
     static void main()
     {
-        sc = new Scanner(System.in);
+        Input.open();
         greetCustomer();
         //TODO Display menu
         //TODO let customer pick items and quantity
@@ -17,13 +14,12 @@ public class CafeApp
         //TODO print receipt
         //TODO keep organised
 
-        sc.close();
+        Input.close();
     }
 
     static void greetCustomer()
     {
-        IO.print("Welcome! What is your name? ");
-        customerName = sc.nextLine();
+        customerName = Input.readString("Welcome! What is your name? ");
         IO.println("Hi " + customerName + "! Here is our menu:");
     }
 
