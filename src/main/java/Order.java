@@ -45,17 +45,8 @@ public class Order {
     {
         askItemId();
         askItemQuantity();
-        String loyaltyMemberAnswer = Input.readString("Loyalty member? (yes/no): ");
-        switch (loyaltyMemberAnswer.toLowerCase())
-        {
-            case "yes", "y" -> hasLoyaltyDiscount = true;
-            case "no", "n" -> hasLoyaltyDiscount = false;
-            default ->
-            {
-                IO.println("Interpreting invalid response as 'no'");
-                hasLoyaltyDiscount = false;
-            }
-        }
+        askLoyalty();
+
         calculatePrice();
     }
 
@@ -76,6 +67,31 @@ public class Order {
         {
             quantity = Input.readInt("Pick a value greater than 0: ");
         }
+    }
+
+    private void askLoyalty()
+    {
+        String loyaltyMemberAnswer = Input.readString("Loyalty member? (yes/no): ");
+        boolean validInputGiven = false;
+        while(!validInputGiven)
+        {
+            switch (loyaltyMemberAnswer.toLowerCase())
+            {
+                case "yes", "y" -> {
+                    hasLoyaltyDiscount = true;
+                    validInputGiven = true;
+                }
+                case "no", "n" -> {
+                    hasLoyaltyDiscount = false;
+                    validInputGiven = true;
+                }
+                default ->
+                {
+                    loyaltyMemberAnswer = Input.readString("Answer yes or no: ");
+                }
+            }
+        }
+
     }
 
     public void printReceipt()
