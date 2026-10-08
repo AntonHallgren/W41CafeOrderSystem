@@ -24,12 +24,21 @@ public class Cafe
         IO.println();
         printName(true);
         currentOrder.printReceipt();
+        printLine();
+        endInteraction();
+        printLine();
     }
 
     private void greetCustomer() {
         String customerName = Input.readString("Welcome! What is your name? ");
         IO.println("Hi " + customerName + "! Here is our menu:");
         currentOrder = new Order(customerName, menu);
+    }
+
+    private void endInteraction()
+    {
+        IO.println("Thank you, " + currentOrder.getCustomerName() + "!");
+        IO.println("See you next time.");
     }
 
     private void printLine()

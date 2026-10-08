@@ -6,7 +6,7 @@ public class Order {
 
     private double subtotal = 0;
 
-    private Menu menu;
+    private final Menu menu;
 
     public Order(String customer, Menu menu)
     {
@@ -36,5 +36,9 @@ public class Order {
 
     }
 
+    public String getCustomerName()
+    {
+        return customerName;
+    }
 
 }
