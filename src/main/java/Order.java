@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public class Order {
     private final String customerName;
 
-    private int itemId = 0;
-    private int quantity = 0;
+    private ArrayList<LineItem> items = new ArrayList<LineItem>();
+//    private int itemId = 0;
+//    private int quantity = 0;
 
     private double subtotal = 0;
     private boolean hasLoyaltyDiscount = false;
@@ -28,7 +31,11 @@ public class Order {
 
     private void calculatePrice()
     {
-        subtotal = menu.getItem(itemId).getCost() * quantity;
+        subtotal = 0;//menu.getItem(itemId).getCost() * quantity;
+        for(LineItem li : items)
+        {
+            subtotal += li.cost();
+        }
         if(hasLoyaltyDiscount)
         {
             discount = subtotal * loyaltyDiscount;
@@ -43,30 +50,32 @@ public class Order {
 
     public void takeOrder()
     {
-        askItemId();
-        askItemQuantity();
+        int id = askItemId();
+        int quantity = askItemQuantity();
+        addItem(id, quantity);
         askLoyalty();
 
         calculatePrice();
     }
 
-    private void askItemId()
+    private int askItemId()
     {
-        itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ");
+        int itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ");
         while(itemId < 1 || itemId > menu.size())
         {
             itemId = Input.readInt("Pick a value in the range 1 to " + menu.size() + ": ");
         }
-        itemId -= 1;
+        return itemId - 1;
     }
 
-    private void askItemQuantity()
+    private int askItemQuantity()
     {
-        quantity = Input.readInt("How many? ");
+        int quantity = Input.readInt("How many? ");
         while(quantity <= 0)
         {
             quantity = Input.readInt("Pick a value greater than 0: ");
         }
+        return quantity;
     }
 
     private void askLoyalty()
@@ -91,10 +100,16 @@ public class Order {
 
     }
 
+    private void addItem(int id, int quantity)
+    {
+        //TODO add item
+    }
+
     public void printReceipt()
     {
         IO.println("Customer \t: " + customerName);
-        IO.println("Item     \t: " + menu.getItem(itemId).getName() + " x " + quantity);
+        //IO.println("Item     \t: " + menu.getItem(itemId).getName() + " x " + quantity);
+        //TODO list items
         IO.println("Subtotal \t: " + Cafe.asSEK(subtotal));
         if(discount > 0)
         {

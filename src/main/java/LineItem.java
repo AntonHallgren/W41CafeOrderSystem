@@ -14,7 +14,7 @@ public class LineItem
         this.quantity += quantity;
     }
 
-    private double cost()
+    public double cost()
     {
         return quantity * item.getCost();
     }
