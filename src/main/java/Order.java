@@ -4,8 +4,6 @@ public class Order {
     private final String customerName;
 
     private final ArrayList<LineItem> items = new ArrayList<>();
-//    private int itemId = 0;
-//    private int quantity = 0;
 
     private double subtotal = 0;
     private boolean hasLoyaltyDiscount = false;
@@ -129,8 +127,6 @@ public class Order {
         {
             li.printInfo();
         }
-        //IO.println("Item     \t: " + menu.getItem(itemId).getName() + " x " + quantity);
-        //TODO list items
         printThinLine();
         IO.println("Subtotal \t: " + Cafe.asSEK(subtotal));
         if(discount > 0)
