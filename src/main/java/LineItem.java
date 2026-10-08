@@ -1,6 +1,6 @@
 public class LineItem
 {
-    private int quantity = 0;
+    private int quantity;
     private final MenuItem item;
 
     public LineItem(MenuItem item, int quantity)

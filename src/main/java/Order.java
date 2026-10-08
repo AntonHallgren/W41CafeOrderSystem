@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Order {
     private final String customerName;
 
-    private ArrayList<LineItem> items = new ArrayList<LineItem>();
+    private final ArrayList<LineItem> items = new ArrayList<>();
 //    private int itemId = 0;
 //    private int quantity = 0;
 
@@ -50,9 +50,17 @@ public class Order {
 
     public void takeOrder()
     {
-        int id = askItemId();
-        int quantity = askItemQuantity();
-        addItem(id, quantity);
+        while(true)
+        {
+            int id = askItemId();
+            if(id == -1)
+            {
+                break;
+            }
+            int quantity = askItemQuantity();
+            addItem(id, quantity);
+
+        }
         askLoyalty();
 
         calculatePrice();
@@ -60,10 +68,10 @@ public class Order {
 
     private int askItemId()
     {
-        int itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ");
-        while(itemId < 1 || itemId > menu.size())
+        int itemId = Input.readInt("Enter item number (1 - " + menu.size() + "), or 0 to quit: ");
+        while(itemId < 0 || itemId > menu.size())
         {
-            itemId = Input.readInt("Pick a value in the range 1 to " + menu.size() + ": ");
+            itemId = Input.readInt("Pick a value in the range 0 to " + menu.size() + ": ");
         }
         return itemId - 1;
     }
