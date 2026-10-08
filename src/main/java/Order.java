@@ -102,7 +102,15 @@ public class Order {
 
     private void addItem(int id, int quantity)
     {
-        //TODO add item
+        for(LineItem li : items)
+        {
+            if(li.getItem() == menu.getItem(id))
+            {
+                li.addQuantity(quantity);
+                return;
+            }
+        }
+        items.add(new LineItem(menu.getItem(id), quantity));
     }
 
     public void printReceipt()

@@ -1,7 +1,7 @@
 public class LineItem
 {
     private int quantity = 0;
-    private MenuItem item;
+    private final MenuItem item;
 
     public LineItem(MenuItem item, int quantity)
     {
@@ -17,5 +17,10 @@ public class LineItem
     public double cost()
     {
         return quantity * item.getCost();
+    }
+
+    public MenuItem getItem()
+    {
+        return item;
     }
 }
