@@ -124,15 +124,21 @@ public class Order {
     public void printReceipt()
     {
         IO.println("Customer \t: " + customerName);
+        printThinLine();
+        for(LineItem li : items)
+        {
+            li.printInfo();
+        }
         //IO.println("Item     \t: " + menu.getItem(itemId).getName() + " x " + quantity);
         //TODO list items
+        printThinLine();
         IO.println("Subtotal \t: " + Cafe.asSEK(subtotal));
         if(discount > 0)
         {
             IO.println("Discount \t: -" + Cafe.asSEK(discount));
         }
         IO.println("VAT      \t: " + Cafe.asSEK(vat));
-        IO.println("------------------------------");
+        printThinLine();
         IO.println("TOTAL    \t: " + Cafe.asSEK(total));
     }
 
@@ -144,5 +150,11 @@ public class Order {
     public double getRevenue()
     {
         return total;
+    }
+
+    private void printThinLine()
+    {
+        IO.println("------------------------------");
+
     }
 }

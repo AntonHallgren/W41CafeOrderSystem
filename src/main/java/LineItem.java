@@ -23,4 +23,10 @@ public class LineItem
     {
         return item;
     }
+
+    public void printInfo()
+    {
+        IO.println("\t" + item.getName() + "\tx" + quantity + "\t" + Cafe.asSEK(cost()));
+    }
+
 }
