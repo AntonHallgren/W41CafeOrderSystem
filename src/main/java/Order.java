@@ -78,4 +78,8 @@ public class Order {
         return customerName;
     }
 
+    public double getRevenue()
+    {
+        return total;
+    }
 }

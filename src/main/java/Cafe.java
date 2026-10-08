@@ -38,6 +38,7 @@ public class Cafe
         endInteraction();
         printLine();
         customersServed++;
+        totalRevenue += currentOrder.getRevenue();
         checkForNewCostomer();
     }
 
@@ -84,7 +85,7 @@ public class Cafe
         IO.println("\t END OF DAY REPORT");
         printLine();
         IO.println("Customers served : " + customersServed);
-        IO.println(("Total revenue   : " + asSEK(totalRevenue)));
+        IO.println(("Total revenue    : " + asSEK(totalRevenue)));
         printLine();
     }
 
