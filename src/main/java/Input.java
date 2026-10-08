@@ -23,6 +23,11 @@ public class Input {
     public static int readInt(String question)
     {
         IO.print(question);
+        while(!sc.hasNextInt())
+        {
+            sc.nextLine();
+            IO.print("Invalid input. Try with an integer: ");
+        }
         int answer = sc.nextInt();
         sc.nextLine();
         return answer;
