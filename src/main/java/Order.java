@@ -14,6 +14,15 @@ public class Order {
     {
         itemId = Input.readInt("Enter item number (1 - " + maxItems + "): ");
         quantity = Input.readInt("How many? ");
+        //TODO do loyalty member later.
+    }
+
+    public void printReceipt()
+    {
+        IO.println("Customer \t: " + customerName);
+        IO.println("Item \t: " + itemId + " x " + quantity);//TODO need access to item name
+        IO.println("Subtotal \t: " + 0 + " SEK");//TODO calculate cost
+
     }
 
 

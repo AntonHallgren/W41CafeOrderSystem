@@ -8,6 +8,7 @@ public class Cafe
         greetCustomer();
         menu.print();
         currentOrder.takeOrder(menu.size());
+        currentOrder.printReceipt();
     }
 
     private void greetCustomer() {
