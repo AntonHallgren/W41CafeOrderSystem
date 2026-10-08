@@ -78,6 +78,16 @@ public class Cafe
         printLine();
     }
 
+    public void printEndOfDayReport()
+    {
+        printLine();
+        IO.println("\t END OF DAY REPORT");
+        printLine();
+        IO.println("Customers served : " + customersServed);
+        IO.println(("Total revenue   : " + asSEK(totalRevenue)));
+        printLine();
+    }
+
     public static String asSEK(double amount)
     {
         return String.format(Locale.ENGLISH, "%.2f SEK", amount);

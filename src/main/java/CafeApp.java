@@ -7,9 +7,8 @@ void main() {
     while(cafe.open)
     {
         cafe.process();
-
     }
-
+    cafe.printEndOfDayReport();
     Input.close();
 }
 
