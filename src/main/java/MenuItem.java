@@ -1,6 +1,6 @@
 public class MenuItem {
-    private String name;
-    private double cost;
+    private final String name;
+    private final double cost;
 
     public MenuItem(String name, double cost)
     {

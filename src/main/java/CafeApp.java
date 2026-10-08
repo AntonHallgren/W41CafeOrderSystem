@@ -7,6 +7,8 @@ public class CafeApp
     {
         Input.open();
         greetCustomer();
+        Menu menu = new Menu();
+        menu.print();
         //TODO Display menu
         //TODO let customer pick items and quantity
         //TODO ask for loyalty member
