@@ -43,8 +43,8 @@ public class Order {
 
     public void takeOrder()
     {
-        itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ") - 1;
-        quantity = Input.readInt("How many? ");
+        askItemId();
+        askItemQuantity();
         String loyaltyMemberAnswer = Input.readString("Loyalty member? (yes/no): ");
         switch (loyaltyMemberAnswer.toLowerCase())
         {
@@ -57,6 +57,25 @@ public class Order {
             }
         }
         calculatePrice();
+    }
+
+    private void askItemId()
+    {
+        itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ");
+        while(itemId < 1 || itemId > menu.size())
+        {
+            itemId = Input.readInt("Pick a value in the range 1 to " + menu.size() + ": ");
+        }
+        itemId -= 1;
+    }
+
+    private void askItemQuantity()
+    {
+        quantity = Input.readInt("How many? ");
+        while(quantity <= 0)
+        {
+            quantity = Input.readInt("Pick a value greater than 0: ");
+        }
     }
 
     public void printReceipt()
