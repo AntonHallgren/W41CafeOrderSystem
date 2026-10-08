@@ -1,5 +1,5 @@
 public class Order {
-    private String customerName;
+    private final String customerName;
 
     private int itemId = 0;
     private int quantity = 0;

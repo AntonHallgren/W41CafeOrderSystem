@@ -3,7 +3,7 @@
 
 void main() {
     Input.open();
-    Cafe cafe = new Cafe();
+    Cafe cafe = new Cafe("Lexicon Cafe");
     cafe.process();
     //TODO let customer pick items and quantity
     //TODO ask for loyalty member
