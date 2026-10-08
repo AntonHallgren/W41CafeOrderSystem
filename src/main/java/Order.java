@@ -6,7 +6,7 @@ public class Order {
 
     private double subtotal = 0;
     private boolean hasLoyaltyDiscount = false;
-    private double discounts = 0;
+    private double discount = 0;
     private double vat = 0;
     private double total = 0;
 
@@ -31,14 +31,14 @@ public class Order {
         subtotal = menu.getItem(itemId).getCost() * quantity;
         if(hasLoyaltyDiscount)
         {
-            discounts = subtotal * loyaltyDiscount;
+            discount = subtotal * loyaltyDiscount;
         }
         else if(subtotal >= 150)
         {
-            discounts = subtotal * quantityDiscount;
+            discount = subtotal * quantityDiscount;
         }
-        vat = (subtotal - discounts) * vatPercentage;
-        total = subtotal - discounts + vat;
+        vat = (subtotal - discount) * vatPercentage;
+        total = subtotal - discount + vat;
     }
 
     public void takeOrder()
@@ -64,7 +64,10 @@ public class Order {
         IO.println("Customer \t: " + customerName);
         IO.println("Item     \t: " + menu.getItem(itemId).getName() + " x " + quantity);
         IO.println("Subtotal \t: " + Cafe.asSEK(subtotal));
-        IO.println("Discount \t: -" + Cafe.asSEK(discounts));
+        if(discount > 0)
+        {
+            IO.println("Discount \t: -" + Cafe.asSEK(discount));
+        }
         IO.println("VAT      \t: " + Cafe.asSEK(vat));
         IO.println("------------------------------");
         IO.println("TOTAL    \t: " + Cafe.asSEK(total));
