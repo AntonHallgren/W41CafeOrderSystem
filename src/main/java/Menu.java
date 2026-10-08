@@ -25,4 +25,9 @@ public class Menu {
             items[i].print();
         }
     }
+
+    public int size()
+    {
+        return items.length;
+    }
 }
