@@ -4,24 +4,35 @@ public class Order {
     private int itemId = 0;
     private int quantity = 0;
 
-    public Order(String customer)
+    private double subtotal = 0;
+
+    private Menu menu;
+
+    public Order(String customer, Menu menu)
     {
         customerName = customer;
+        this.menu = menu;
     }
 
-
-    public void takeOrder(int maxItems)
+    private void calculatePrice()
     {
-        itemId = Input.readInt("Enter item number (1 - " + maxItems + "): ");
+        subtotal = menu.getItem(itemId).getCost() * quantity;
+    }
+
+    public void takeOrder()
+    {
+        itemId = Input.readInt("Enter item number (1 - " + menu.size() + "): ") - 1;
         quantity = Input.readInt("How many? ");
         //TODO do loyalty member later.
+
+        calculatePrice();
     }
 
     public void printReceipt()
     {
         IO.println("Customer \t: " + customerName);
-        IO.println("Item \t: " + itemId + " x " + quantity);//TODO need access to item name
-        IO.println("Subtotal \t: " + 0 + " SEK");//TODO calculate cost
+        IO.println("Item \t: " + menu.getItem(itemId).getName() + " x " + quantity);//TODO need access to item name
+        IO.println("Subtotal \t: " + subtotal + " SEK");//TODO calculate cost
 
     }
 

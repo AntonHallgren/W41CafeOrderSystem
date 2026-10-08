@@ -26,6 +26,11 @@ public class Menu {
         }
     }
 
+    public MenuItem getItem(int id)
+    {
+        return items[id];
+    }
+
     public int size()
     {
         return items.length;

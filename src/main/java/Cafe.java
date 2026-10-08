@@ -1,6 +1,7 @@
 public class Cafe
 {
-    private static final String thickLine = "=============";
+    private static final String thickLine
+            = "==============================";
 
     private final String name;
     private final Menu menu = new Menu();
@@ -19,7 +20,7 @@ public class Cafe
         menu.print();
         printLine();
         IO.println();
-        currentOrder.takeOrder(menu.size());
+        currentOrder.takeOrder();
         IO.println();
         printName(true);
         currentOrder.printReceipt();
@@ -28,7 +29,7 @@ public class Cafe
     private void greetCustomer() {
         String customerName = Input.readString("Welcome! What is your name? ");
         IO.println("Hi " + customerName + "! Here is our menu:");
-        currentOrder = new Order(customerName);
+        currentOrder = new Order(customerName, menu);
     }
 
     private void printLine()

@@ -13,4 +13,14 @@ public class MenuItem {
         IO.println(name + "\t" + cost + " SEK");
     }
 
+    public double getCost()
+    {
+        return cost;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
 }
